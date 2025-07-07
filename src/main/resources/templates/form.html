@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="icon" type="image/png" href="/icon2_3232.png">
+    <title>Form Resep</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container py-5">
+    <h2 class="mb-4" th:text="${#strings.isEmpty(resep.id) ? 'Tambah Resep' : 'Edit Resep'}"></h2>
+    <form th:action="@{/simpan}" th:object="${resep}" method="post" class="card p-4 shadow-sm">
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="mb-3">
+            <label for="judul" class="form-label">Judul Resep</label>
+            <input type="text" class="form-control" id="judul" th:field="*{judul}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="kategori" class="form-label">Kategori</label>
+            <input type="text" class="form-control" id="kategori" th:field="*{kategori}">
+        </div>
+
+        <div class="mb-3">
+            <label for="bahan" class="form-label">Bahan</label>
+            <textarea class="form-control" id="bahan" rows="4" th:field="*{bahan}" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="langkah" class="form-label">Langkah-langkah</label>
+            <textarea class="form-control" id="langkah" rows="4" th:field="*{langkah}" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">Simpan</button>
+        <a href="/" class="btn btn-secondary">Kembali</a>
+    </form>
+</div>
+</body>
+</html>
